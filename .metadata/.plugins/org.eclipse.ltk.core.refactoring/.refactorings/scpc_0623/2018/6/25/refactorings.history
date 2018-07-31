@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Convert local variable &apos;scpc_0623.Solution_ex01.main().sc&apos; in &apos;scpc_0623.Solution_ex01.main()&apos; to field&#x0D;&#x0A;- Original project: &apos;scpc_0623&apos;&#x0D;&#x0A;- Original element: &apos;scpc_0623.Solution_ex01.main().sc&apos;&#x0D;&#x0A;- Field name: &apos;sc&apos;&#x0D;&#x0A;- Initialize field in method&#x0D;&#x0A;- Declared visibility: &apos;private&apos;&#x0D;&#x0A;- Declare field &apos;static&apos;" description="Convert local variable &apos;sc&apos; to field" final="false" flags="2" id="org.eclipse.jdt.ui.promote.temp" initialize="1" input="/src&lt;scpc_0623{Solution_ex01.java" name="sc" selection="1108 27" stamp="1529762294837" static="true" version="1.0" visibility="2"/>
+</session>
