@@ -42,7 +42,7 @@ public class SW_1247 {
 					clients[i][j] = Integer.parseInt(st.nextToken());
 				}
 			}
-
+			
 			min= Integer.MAX_VALUE;
 
 			perm(clients, 0);

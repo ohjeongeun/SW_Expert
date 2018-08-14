@@ -13,8 +13,8 @@ public class BabyGin {
 	static int counts[];//0~9까지의 숫자의 빈도수 저장 
 						//각원소를 체크하며 run, triplet, baby-gin 여부 판단
 	
-	static boolean tri;
-	static boolean r;
+	static int tri;
+	static int r;
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		String s = br.readLine();
@@ -26,19 +26,16 @@ public class BabyGin {
 			counts[index]++;
 		}
 		
-		tri=false;
-		r=false;
+		
+		tri=0;
+		r=0;
 		triplet(counts);
 		run(counts);
 		
-		if(tri==true && r==true) {
-			System.out.println("Baby-Gin");
-			
-		}else if(tri==true && r==false){
-			System.out.println("triplet, but No Baby-Gin");
-			
-		}else if(tri==false && r==true){
-			System.out.println("run, but No Baby-Gin");
+		if(tri+r==2) {
+			System.out.println("Baby Gin!");
+		}else {
+			System.out.println("not Baby Gin");
 		}
 		
 	}
@@ -50,7 +47,8 @@ public class BabyGin {
 				//3차감해주고
 				counts[i] -= 3;
 				//triplet 표시
-				tri = true;
+				tri++;
+				i-=1;
 			}
 		}
 	}
@@ -77,8 +75,8 @@ public class BabyGin {
 					//1씩 차감해주고, run표시
 					for(int k=0;k<3; k++) {
 						counts[i+k]-=1;
-						r=true;
 					}
+					r++;
 				}
 			}
 		}
