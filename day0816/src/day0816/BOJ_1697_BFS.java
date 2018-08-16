@@ -45,7 +45,6 @@ public class BOJ_1697_BFS {
 			for(int dep=0; dep<size; dep++) {
 				
 				int v = queue.remove();
-				//System.out.println(v);
 				if(v==K) {
 					return;
 				}
