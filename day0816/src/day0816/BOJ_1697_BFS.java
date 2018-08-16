@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class BOJ_1697 {
+public class BOJ_1697_BFS {
 	
 	static int N; //수빈
 	static int K; //동생
@@ -25,11 +25,12 @@ public class BOJ_1697 {
 		}
 		
 		//dx = new int[]{N-1, N+1, 2*N};
-		visited = new int[100001];
+		visited = new int[200001];
 		queue = new LinkedList<>();
 		depth=0;
 		bfs(N, K);
 		System.out.println(depth);
+		br.close();
 	}
 	
 	public static void bfs(int x, int K) {
@@ -54,22 +55,18 @@ public class BOJ_1697 {
 				for(int i=0; i<3; i++) {
 					int nv = dx[i];
 					
-					//방문한적 없으면 
-					//&&(0<=dx[i]&& dx[i]<=100000)
-					if(visited[nv]==0) {
-						visited[nv]=1;
-						queue.add(nv);
-						
+					if(0>=nv || nv>100001) {
+						continue;
 					}
 					
+					//방문한적 없으면 
+					if(visited[nv]==0) {
+						visited[nv]=1;
+						queue.add(nv);	
+					}
 				}
-				
-				
 			}
 			depth++;
-			
 		}
-		
 	}
-
 }
