@@ -109,8 +109,8 @@ public class SW_1248 {
 			
 			
 			System.out.println("#"+t+" "+result+" "+countChild(result));
-/*			System.out.println(c1Parents);
-			System.out.println(c2Parents);*/
+			System.out.println(c1Parents);
+			System.out.println(c2Parents);
 		}
 		
 		

@@ -8,6 +8,7 @@ public class Power {
 	}
 	
 	public static int Power(int x, int n) {
+		
 		if(n==1) return x;
 		
 		if(n%2==0) {
@@ -20,8 +21,6 @@ public class Power {
 		}
 		
 			
-			
 	}
 	
-
 }

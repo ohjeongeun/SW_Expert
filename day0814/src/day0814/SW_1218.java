@@ -16,6 +16,7 @@ public class SW_1218 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
 		for (int t = 1; t <= 10; t++) {
+			
 			len = Integer.parseInt(br.readLine());
 			str = br.readLine();
 
@@ -24,8 +25,9 @@ public class SW_1218 {
 			
 			
 			for (int i = 0; i < len; i++) {
-				
+
 				token = str.charAt(i); //str중 i번째 token 짜름
+				
 
 				//토큰이 왼쪽 괄호면 stack에 push
 				if (token == '{' || token == '[' || token == '(' || token == '<') {
@@ -33,6 +35,12 @@ public class SW_1218 {
 				
 				//토큰이 오른쪽 괄호녀석들이면
 				} else {
+					
+					//스택비어있을 때 오른쪽 괄호 나오면 error
+					if(stack.isEmpty()) {
+						flag = false;
+						break;
+					}
 
 					//stack의 가장 위에있는 괄호 하나 빼서 비교
 					pivot = stack.pop();
@@ -55,7 +63,6 @@ public class SW_1218 {
 					}
 
 				}
-
 
 			}
 
