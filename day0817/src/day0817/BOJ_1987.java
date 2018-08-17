@@ -41,7 +41,7 @@ public class BOJ_1987 {
 		dfs(0, 0, 1);
 		System.out.println(ans);
 		
-	}
+	} 
 	
 	public static void dfs(int y, int x, int cnt) {
 
