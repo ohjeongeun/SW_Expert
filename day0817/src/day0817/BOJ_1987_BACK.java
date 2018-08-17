@@ -5,17 +5,18 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class BOJ_1987 {
+public class BOJ_1987_BACK {
 	static int R;//세로
 	static int C;//가로
 	static String board[][];
 	static int alphabet[];
+	static int visited[][];
 	
 					//우 하 좌 상
-	static int dx[] = {1, 0, -1, 0};
-	static int dy[] = {0, 1, 0, -1};
+	static int dx[] = {0, 0, -1, 1};
+	static int dy[] = {-1, 1, 0, 0};
 	
-	static int ans;
+	static int cnt;
 	
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -36,18 +37,28 @@ public class BOJ_1987 {
 		
 		//1~26개
 		alphabet = new int [27];
-		alphabet[board[0][0].charAt(0)-64]=1;
-		ans=0;
-		dfs(0, 0, 1);
-		System.out.println(ans);
+		visited = new int[R][C];
+		
+		cnt=0;
+		dfs(0, 0);
+		for(int i=0; i<R; i++) {
+			for(int j=0; j<C; j++) {
+				System.out.print(visited[i][j]);
+			}
+			System.out.println();
+		}
+		System.out.println(cnt);
 		
 	}
 	
-	public static void dfs(int y, int x, int cnt) {
-
-		ans = Math.max(ans, cnt);
+	//갈수있는지 없는지가아니라 최댓값이니까 다른방향도 탐색해봐야함 => bfs해야하나
+	public static void dfs(int y, int x) {
+		visited[y][x]=1;
+		alphabet[board[y][x].charAt(0)-64]=1;
+		cnt++;
 		
-		//next지점 탐색
+		//dfs에서 포문 안끝났는데 재귀들어가면 어케대능지,, 남은 포문 인덱스는
+		//다음 점 탐색
 		for(int i=0; i<4; i++) {
 			int ny = y+dy[i];
 			int nx = x+dx[i];
@@ -55,19 +66,15 @@ public class BOJ_1987 {
 			//board 벗어나면
 			if(ny<0 || nx<0 || ny>=R || nx>=C) continue;
 			
-			//nex지점 알파벳의 인덱스
-			int p = board[ny][nx].charAt(0)-64;
+			//방문했던 곳이면 
+			if(visited[ny][nx]==1) continue;
 			
 			//중복된 알파벳이면
-			if(alphabet[p]==1) continue;
+			if(alphabet[board[ny][nx].charAt(0)-64]==1) continue;
 			
-			alphabet[p]=1;
-			dfs(ny, nx, cnt+1);
-			
-			// dfs 호출 후 
-			// 호출 전 방문한 지점의 알파벳을 방문하지 않은것으로 처리 
-			// => 다른 경로로 가는 경우도 모두 구하기 위해
-			alphabet[p]=0;
+			System.out.println(ny+" "+nx);
+			dfs(ny, nx);
+
 			
 		}
 		
