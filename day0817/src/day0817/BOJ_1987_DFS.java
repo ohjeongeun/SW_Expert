@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class BOJ_1987 {
+public class BOJ_1987_DFS {
 	static int R;//세로
 	static int C;//가로
 	static String board[][];
@@ -44,7 +44,7 @@ public class BOJ_1987 {
 	} 
 	
 	public static void dfs(int y, int x, int cnt) {
-
+		
 		ans = Math.max(ans, cnt);
 		
 		//next지점 탐색

@@ -32,6 +32,7 @@ public class SW_1226_BACK {
 			result=0;
 			visited[1][1]=1;
 			dfs(1, 1);
+			
 			System.out.println("#"+T+" "+result);
 		}
 		
@@ -39,13 +40,13 @@ public class SW_1226_BACK {
 	
 	public static void dfs(int y, int x) {
 		
-		/*for(int i=0; i<16; i++) {
+		for(int i=0; i<16; i++) {
 			for(int j=0; j<16; j++) {
 				System.out.print(visited[i][j]);
 			}
 			System.out.println();
 		}
-		System.out.println();*/
+		System.out.println();
 		
 		//´ÙÀ½Á¡
 		for(int i=0; i<4; i++) {

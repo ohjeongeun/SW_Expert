@@ -65,6 +65,7 @@ public class BOJ_1697_BFS {
 					}
 				}
 			}
+			System.out.println(queue);
 			depth++;
 		}
 	}

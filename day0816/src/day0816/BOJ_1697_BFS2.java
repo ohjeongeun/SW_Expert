@@ -7,14 +7,14 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class BOJ_1697 {
+public class BOJ_1697_BFS2 {
 	
 	static int N; //수빈
 	static int K; //동생
 	static int visited[];
 	static int dx[];
 	static Queue<Integer> queue;
-	static int depth;
+	static int depth[];
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
@@ -24,52 +24,45 @@ public class BOJ_1697 {
 			K = Integer.parseInt(st.nextToken());	
 		}
 		
-		//dx = new int[]{N-1, N+1, 2*N};
-		visited = new int[100001];
+		visited = new int[200001];
 		queue = new LinkedList<>();
-		depth=0;
+		depth = new int[200001];
 		bfs(N, K);
-		System.out.println(depth);
+		System.out.println(depth[K]);
+		br.close();
 	}
 	
 	public static void bfs(int x, int K) {
 		//수빈이 초기 위치
 		queue.add(x);
 		visited[x] =1;
+		depth[x] = 0;
 		
 		//수빈이 현재 위치
 		while(!queue.isEmpty()) {
 			
-			int size = queue.size();
-			for(int dep=0; dep<size; dep++) {
+			int v = queue.remove();
+			if(v==K) {
+				return;
+			}
+			
+			dx = new int[]{v-1, v+1, 2*v};
+			//수빈이의 다음 위치
+			for(int i=0; i<3; i++) {
+				int nv = dx[i];
 				
-				int v = queue.remove();
-				//System.out.println(v);
-				if(v==K) {
-					return;
+				if(0>=nv || nv>100001) {
+					continue;
 				}
 				
-				dx = new int[]{v-1, v+1, 2*v};
-				//수빈이의 다음 위치
-				for(int i=0; i<3; i++) {
-					int nv = dx[i];
-					
-					//방문한적 없으면 
-					//&&(0<=dx[i]&& dx[i]<=100000)
-					if(visited[nv]==0) {
-						visited[nv]=1;
-						queue.add(nv);
-						
-					}
-					
+				//방문한적 없으면 
+				if(visited[nv]==0) {
+					visited[nv]=1;
+					queue.add(nv);
+					depth[nv] = depth[v]+1;
 				}
-				
 				
 			}
-			depth++;
-			
 		}
-		
 	}
-
 }

@@ -9,6 +9,8 @@ public class BFSalgo {
 	static int visited[];
 	static Queue<Integer> q;
 	
+	static int D[];
+	static int P[];
 	public static void main(String[] args) {
 		adj = new LinkedList<>();
 		
@@ -26,21 +28,33 @@ public class BFSalgo {
 			adj.add(tmp);
 		}
 
+		D = new int[9]; //최단거리
+		P = new int[9]; //최단경로
 		bfs();
+		for(int i=0; i<9; i++) {
+			System.out.print(D[i]);
+		}
+		System.out.println();
+		for(int i=0; i<9; i++) {
+			System.out.print(P[i]);
+		}
 	}
 	
 	public static void bfs() {
+		
 		q = new LinkedList<Integer>();
 		visited = new int[9];
 		
 		q.add(0);
 		visited[0]=1;
+		D[0] = 0;
+		P[0] = 0;
+		
 		
 		while(!q.isEmpty()) {
 			
-			//System.out.println(q);
 			int t = q.poll();
-			//System.out.println(q);
+			System.out.println(t);
 			
 			//t의 이웃점 탐색
 			for(int j=1; j<adj.get(t).length; j++) {
@@ -51,7 +65,8 @@ public class BFSalgo {
 				if(visited[u]==0) {
 					q.add(u);
 					visited[u]=1;
-					
+					D[u] = D[t]+1;
+					P[u] = t;//정점 u의 부모 정점을 t로 설정
 				}
 			}
 

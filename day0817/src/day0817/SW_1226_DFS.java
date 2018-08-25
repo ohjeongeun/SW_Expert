@@ -38,6 +38,14 @@ public class SW_1226_DFS {
 	
 	public static void dfs(int y, int x) {
 		visited[y][x] = 1;
+		for(int i=0; i<16; i++) {
+			for(int j=0; j<16; j++) {
+				System.out.print(visited[i][j]);
+			}
+			System.out.println();
+		}
+		System.out.println();
+		
 		
 		//´ÙÀ½Á¡
 		for(int i=0; i<4; i++) {
