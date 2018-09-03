@@ -18,7 +18,7 @@ public class SW_1231 {
 			
 			for(int i=0; i<N; i++) {
 				StringTokenizer st = new StringTokenizer(br.readLine());
-				while(st.hasMoreTokens()) {
+				/*while(st.hasMoreTokens()) {
 					int index = Integer.parseInt(st.nextToken());
 					tree[index] = st.nextToken();
 					
@@ -26,7 +26,11 @@ public class SW_1231 {
 					while(st.hasMoreTokens()) {
 						st.nextToken();
 					}
-				}
+				}*/
+				int index = Integer.parseInt(st.nextToken());
+				tree[index] = st.nextToken();
+				
+				
 			}
 			result = "";
 			recursive(1);

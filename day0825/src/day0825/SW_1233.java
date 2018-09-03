@@ -24,19 +24,22 @@ public class SW_1233 {
 			
 			for(int i=0; i<N; i++) {
 				StringTokenizer st = new StringTokenizer(br.readLine());
-				while(st.hasMoreTokens()) {
+				/*while(st.hasMoreTokens()) {
 					int index =  Integer.parseInt(st.nextToken());
 					tree[index] = st.nextToken();
 					
 					while(st.hasMoreTokens()) {
 						st.nextToken();
 					}
-				}
+				}*/
+				int index =  Integer.parseInt(st.nextToken());
+				tree[index] = st.nextToken();
 			}
 			
 			list = new LinkedList<>();
 			stack = new Stack<>();
 			postfix(1);
+			System.out.println(list);
 			result=1;
 			sum();
 			
