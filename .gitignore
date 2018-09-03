@@ -1,6 +1,7 @@
 /.metadata/
 /.recommenders/
-/.ecount/
-/.ecount2/
-/.ecount3/
-/.ecount4/
+
+ecount/
+ecount2/
+ecount3/
+ecount4/
