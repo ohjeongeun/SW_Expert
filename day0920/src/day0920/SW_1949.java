@@ -58,14 +58,14 @@ public class SW_1949 {
 				int x = startX.removeFirst();
 				dfs(y, x, 0, false);
 			}*/
-			dfs(2, 4, 100, 1, false);
+			dfs(2, 4, 100, 1, 0);
 			
 			System.out.println("#"+t+" ");
 		}
 		
 	}
 	
-	public static void dfs(int curY, int curX, int nextValue, int len, boolean flag) {
+	public static void dfs(int curY, int curX, int nextValue, int len, int flag) {
 		
 		visited[curY][curX] = 1;
 		System.out.println(curY+" "+ curX+"  "+len);
@@ -82,16 +82,16 @@ public class SW_1949 {
 			
 			//내리막길이면
 			if(map[curY][curX] > map[nextY][nextX]) {
-				dfs(nextY, nextX, map[nextY][nextX], len+1, false);
+				dfs(nextY, nextX, map[curY][curX], len+1, flag);
 				
 			}
 			
 			//같으면
 			else if(map[curY][curX] == map[nextY][nextX]) {
 				//아직 공사한적 없으면
-				if(flag==false) {
-					dfs(nextY, nextX, map[nextY][nextX]-1, len+1, true);
-				}else {
+				if(flag==0) {
+					dfs(nextY, nextX, map[nextY][nextX]-1, len+1, flag+1);
+				}else if(flag>0){
 					return; //같은데 이미 공사했으면 종료.
 				}
 				
@@ -99,9 +99,9 @@ public class SW_1949 {
 			//오르막길이면
 			else if(map[curY][curX] < map[nextY][nextX]) {
 				//아직 공사한적 없는지? K만큼 깎아서 될 일인지?
-				if(flag==false && map[curY][curX] > map[nextY][nextX]-K) {
-					dfs(nextY, nextX, map[nextY][nextX]-1, len+1, true);
-				}else {
+				if(flag==0 && map[curY][curX] > map[nextY][nextX]-K) {
+					dfs(nextY, nextX, map[nextY][nextX]-1, len+1, flag+1);
+				}else if(flag>0){
 					return; //오르막길인데 이미 공사했으면 종료.
 				}
 				
