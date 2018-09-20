@@ -18,6 +18,7 @@ public class SW_1949 {
 	static int dy[] = {0, 1, 0, -1};
 	static int dx[] = {1, 0, -1, 0};
 	static int visited[][];
+	static int max;
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		T = Integer.parseInt(br.readLine());
@@ -52,23 +53,23 @@ public class SW_1949 {
 					}
 				}
 			}
-			
-			/*while(startY.isEmpty()) {
+			max=0;
+			while(!startY.isEmpty()) {
 				int y = startY.removeFirst();
 				int x = startX.removeFirst();
-				dfs(y, x, 0, false);
-			}*/
-			dfs(2, 4, 100, 1, 0);
+				visited = new int[N][N];
+				dfs(y, x, map[y][x], 1, 0);
+			}
 			
-			System.out.println("#"+t+" ");
+			System.out.println("#"+t+" "+max);
 		}
 		
 	}
 	
-	public static void dfs(int curY, int curX, int nextValue, int len, int flag) {
-		
+	public static void dfs(int curY, int curX, int curValue, int len, int flag) {
+		if(max<len) max=len;
 		visited[curY][curX] = 1;
-		System.out.println(curY+" "+ curX+"  "+len);
+		//System.out.println(curY+" "+ curX+"  "+len+"  "+flag);
 		
 		for(int i=0; i<4; i++) {
 			int nextY = curY+dy[i];
@@ -81,28 +82,28 @@ public class SW_1949 {
 			if(visited[nextY][nextX]==1) continue;
 			
 			//내리막길이면
-			if(map[curY][curX] > map[nextY][nextX]) {
-				dfs(nextY, nextX, map[curY][curX], len+1, flag);
+			if(curValue > map[nextY][nextX]) {
+				dfs(nextY, nextX, map[nextY][nextX], len+1, flag);
 				
 			}
 			
 			//같으면
-			else if(map[curY][curX] == map[nextY][nextX]) {
+			else if(curValue == map[nextY][nextX]) {
 				//아직 공사한적 없으면
 				if(flag==0) {
 					dfs(nextY, nextX, map[nextY][nextX]-1, len+1, flag+1);
 				}else if(flag>0){
-					return; //같은데 이미 공사했으면 종료.
+					continue; //같은데 이미 공사했으면 pass
 				}
 				
 			}
 			//오르막길이면
-			else if(map[curY][curX] < map[nextY][nextX]) {
+			else if(curValue < map[nextY][nextX]) {
 				//아직 공사한적 없는지? K만큼 깎아서 될 일인지?
-				if(flag==0 && map[curY][curX] > map[nextY][nextX]-K) {
-					dfs(nextY, nextX, map[nextY][nextX]-1, len+1, flag+1);
+				if(flag==0 && curValue > map[nextY][nextX]-K) {	
+					dfs(nextY, nextX, curValue-1, len+1, flag+1);
 				}else if(flag>0){
-					return; //오르막길인데 이미 공사했으면 종료.
+					continue; //오르막길인데 이미 공사했으면 pass
 				}
 				
 				
