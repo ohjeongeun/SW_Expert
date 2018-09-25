@@ -23,6 +23,7 @@ public class SW_1258 {
 		T = Integer.parseInt(br.readLine());
 		
 		for(int t=1; t<=T; t++) {
+			
 			n = Integer.parseInt(br.readLine());
 			map = new int[n][n];
 			visited = new int[n][n];
@@ -38,6 +39,8 @@ public class SW_1258 {
 			ArrayList<int[]> list = new ArrayList<>();
 			for(int i=0; i<n; i++) {
 				for(int j=0; j<n; j++) {
+					
+					//0이 아니고 방문한적 없으면 dfs 시작
 					if(map[i][j]!=0 && visited[i][j]==0) {
 						size=0;
 						endY=0;
@@ -62,7 +65,7 @@ public class SW_1258 {
 				public int compare(int o1[], int o2[]) {
 					int result = 0;
 					
-					if(o1[0]<o2[0]) { 
+					if(o1[0]<o2[0]) {
 						result= -1; //오름차순
 					}else if(o1[0]==o2[0] && o1[2]<o2[2]){
 						result= -1; //오름차순
