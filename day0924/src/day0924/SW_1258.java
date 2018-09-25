@@ -62,10 +62,10 @@ public class SW_1258 {
 				public int compare(int o1[], int o2[]) {
 					int result = 0;
 					
-					if(o1[0]<o2[0]) {
-						result= -1;
+					if(o1[0]<o2[0]) { 
+						result= -1; //오름차순
 					}else if(o1[0]==o2[0] && o1[2]<o2[2]){
-						result= -1;
+						result= -1; //오름차순
 					}
 					return result;
 				}
