@@ -42,15 +42,6 @@ public class SW_1263 {
 				min.add(sum);
 			}
 			
-			/*for(int i=1; i<=N; i++) {
-				System.out.print(visited[i]);
-			}*/
-			/*for(int i=1; i<=N; i++) {
-				for(int j=1; j<=N; j++) {
-					System.out.print(adj[i][j]);
-				}
-				System.out.println();
-			}*/
 			System.out.println("#"+t+" "+min.poll());
 			
 			
