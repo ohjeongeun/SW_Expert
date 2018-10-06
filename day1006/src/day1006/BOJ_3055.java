@@ -3,6 +3,7 @@ package day1006;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
@@ -36,6 +37,8 @@ public class BOJ_3055 {
 		
 		int destY=0;
 		int destX=0;
+		int startY=0;
+		int startX=0;
 		for(int i=0; i<R; i++) {
 			for(int j=0; j<C; j++) {
 				
@@ -47,14 +50,14 @@ public class BOJ_3055 {
 				//물을 먼저 넣음
 				if(map[i][j].equals("*")) {
 					q.add(new Node(i, j));
-					//visited[i][j]=1;
 				}else if(map[i][j].equals("S")) {
-					q.add(new Node(i, j));
-					//visited[i][j]=1;
+					startY=i;
+					startX=j;
 				}
 			}
 		}
 		
+		q.add(new Node(startY, startX));
 		bfs();
 		int result = visited[destY][destX];
 		if(result==0 ) {
