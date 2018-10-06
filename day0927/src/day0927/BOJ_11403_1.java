@@ -23,6 +23,7 @@ public class BOJ_11403_1 {
 			StringTokenizer st = new StringTokenizer(br.readLine());
 			for(int j=1; j<=N; j++) {
 				adj[i][j] = Integer.parseInt(st.nextToken());
+				//방향그래프니까 adj[j][i]=1 따로 안해줌
 			}
 		}
 		
@@ -44,7 +45,6 @@ public class BOJ_11403_1 {
 	}
 	
 	public static void dfs(int node) {
-		//System.out.println(list);
 		
 		for(int j=1; j<=N; j++) {
 			if(visited[j]==0 && adj[node][j]==1) {
