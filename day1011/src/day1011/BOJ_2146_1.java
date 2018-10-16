@@ -39,17 +39,17 @@ public class BOJ_2146_1 {
 		for(int i=0; i<N; i++) {
 			for(int j=0; j<N; j++) {
 				if(visited[i][j]==0 && map[i][j]==1) {
-					visited = new int[N][N];
 					findStart(i, j);
 					bfs();
-					q2 = new LinkedList<>();
-					/*for(int ii=0; ii<N; ii++) {
+					for(int ii=0; ii<N; ii++) {
 						for(int jj=0; jj<N; jj++) {
 							System.out.print(visited[ii][jj]+" ");
 						}
 						System.out.println();
 					}
-					System.out.println();*/
+					System.out.println();
+					visited = new int[N][N];
+					q2 = new LinkedList<>();
 				}
 			}
 		}
@@ -86,12 +86,8 @@ public class BOJ_2146_1 {
 					q.add(new Node(ny, nx));
 					q2.add(new Node(ny, nx));
 				}
-				
 			}
-			
-			
 		}
-		
 	}
 	
 	
@@ -110,9 +106,8 @@ public class BOJ_2146_1 {
 				if(ny<0 || nx<0 || ny>=N || nx>=N) continue;
 
 				//방문한곳이면
-				if(visited[ny][nx]>0) {
-					continue;
-				}
+				if(visited[ny][nx]>0) continue;
+				
 				
 				//
 				if(visited[ny][nx]==0 && map[ny][nx]==1) {
@@ -125,14 +120,8 @@ public class BOJ_2146_1 {
 				q2.add(new Node(ny, nx));
 				
 			}
-			
-			
 		}
-		
-		
 	}
-	
-
 }
 
 class Node {
