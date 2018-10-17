@@ -30,7 +30,7 @@ public class BOJ_11052 {
 				// memo[4] = memo[4], memo[1]+arr[3]; 1+6
 				// memo[4] = memo[4], memo[0]+arr[4]; 0+7
 			
-			
+			 
 			
 			}
 			
