@@ -1,3 +1,4 @@
+//시간초과!
 package day1017;
 
 import java.io.BufferedReader;
